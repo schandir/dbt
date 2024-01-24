@@ -1,7 +1,7 @@
 name: SnowflakeMerge
 
 config-version: 2
-version: version
+version: 2
 
 profile: Snowflake
 
