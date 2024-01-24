@@ -1,7 +1,8 @@
-name: SnowflakeMerge
+name: 'SnowflakeMerge'
 
+version: '1.0.0'
 config-version: 2
-version: 2
 
-profile: Snowflake
+profile: 'Snowflake'
+source-paths: ["models"]
 
