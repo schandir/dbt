@@ -1,0 +1,8 @@
+name: Snowflake Merge
+
+config-version: 2
+version: version
+
+profile: Snowflake
+
+model-paths: /
