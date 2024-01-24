@@ -1,1 +1,4 @@
-
+MERGE INTO player_summary USING (select TRUNC("entry_timestamp", 'hour') as event_hour, "account_id",  "media":id as media_id, "device":type as device_type, 
+"device":osName as device_os, "domain", sum("seconds_played") as seconds_played, count_if("media":event = 'video_view') as video_views from player group by event_hour, "account_id", "media":id, "device":type, "device":osName, "domain") AS p ON event_hour = p.event_hour
+  WHEN MATCHED THEN UPDATE SET "seconds_played" = "seconds_played" + p.seconds_played, "video_views" = "video_views" + p.video_views
+  WHEN NOT MATCHED THEN INSERT ("event_hour", "account_id", "media_id", "device_type", "device_os", "domain", "seconds_played", "video_views") VALUES (p.event_hour, p."account_id", p.media_id, p.device_type, p.device_os, p."domain", p.seconds_played, p.video_views);
